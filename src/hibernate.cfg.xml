@@ -9,7 +9,7 @@
 		<property name="connection.url">jdbc:mysql://localhost:3306/ecommerce</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">root</property>
-		<mapping resource="EProduct.hbm.xml"/>
+		<mapping resource="com/ecommerce/EProduct.hbm.xml"/>
 	</session-factory>
 	
 </hibernate-configuration>
