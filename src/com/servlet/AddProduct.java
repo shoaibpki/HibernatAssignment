@@ -45,18 +45,24 @@ public class AddProduct extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			
+			// session factory object
 			SessionFactory sf = HibernateUtil.getSessionFactory();
 			
+			// session object
 			Session session = sf.openSession();
 			Transaction tx = session.beginTransaction();
 			
-			EProduct product = new EProduct();
-			
+			//set the field values
+			EProduct product = new EProduct();			
 			product.setName(request.getParameter("pname"));
 			product.setPrice(BigDecimal.valueOf(Double.valueOf((request.getParameter("price")))));
 			product.setDateAdded(new Date());
+			
+			//save into the database
 			session.save(product);
 			tx.commit();
+			
 			PrintWriter out = response.getWriter();
 			out.print("<h3>Data has been Saved!</h3>");
 			sf.close();
